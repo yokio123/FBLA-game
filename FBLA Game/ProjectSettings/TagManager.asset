@@ -12,7 +12,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Decoration
   - 
   - 
   - 
@@ -42,12 +42,12 @@ TagManager:
   - name: Background
     uniqueID: 669533421
     locked: 0
+  - name: Decoration
+    uniqueID: 460320179
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 3261804321
-    locked: 0
-  - name: New Layer 3
-    uniqueID: 460320179
     locked: 0
