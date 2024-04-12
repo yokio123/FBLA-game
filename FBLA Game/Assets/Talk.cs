@@ -20,7 +20,7 @@ public class Talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (In_Area == true && Input.GetKeyDown(KeyCode.Space))
+        if (In_Area == true && Input.GetKeyDown(KeyCode.Space)== true)
         {
            gameObject.SetActive(true);
         }
