@@ -21,7 +21,7 @@ public class start_game : MonoBehaviour
     {
         if (In_Area == true && Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("level 1");
+            SceneManager.LoadScene("lvl 1");
 
         }
 
