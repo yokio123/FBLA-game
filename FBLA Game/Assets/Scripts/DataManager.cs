@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
+    public GameObject traderUI;
+    public GameObject traderUINameText;
+    public GameObject traderUIPhraseText;
+    public GameObject traderUITradeIcon;
+    public GameObject traderUITradeInfoText;
+    public GameObject traderUIButtonText;
+
     public Sprite woodIcon;
     public Sprite stoneIcon;
     public Sprite ironIcon;
@@ -12,7 +19,5 @@ public class DataManager : MonoBehaviour
 
     public Sprite beigeBackground;
     public TMP_FontAsset minecraftFont;
-
-    public GameObject traderUI;
 
 }

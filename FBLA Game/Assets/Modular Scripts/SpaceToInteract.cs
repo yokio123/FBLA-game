@@ -19,8 +19,7 @@ public class SpaceToInteract : MonoBehaviour
     public UnityEvent OnInteractStartEvent;
     public UnityEvent OnInteractEndEvent;
 
-    /*[HideInInspector] */
-    public bool isInteracting = false;
+    [HideInInspector] public bool isInteracting = false;
 
     // Start is called before the first frame update. Overrided if inherrited (like TraderMenu)
     private void Start()
@@ -89,14 +88,13 @@ public class SpaceToInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactTextCanvas.activeSelf && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!isInteracting)
+            if (!isInteracting && interactTextCanvas.activeSelf)
             {
                 OnInteractStartEvent.Invoke();
                 isInteracting = true;
-            }
-            else
+            } else if (isInteracting)
             {
                 OnInteractEndEvent.Invoke();
                 isInteracting = false;
