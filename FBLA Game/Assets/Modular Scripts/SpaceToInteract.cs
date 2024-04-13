@@ -16,19 +16,24 @@ public class SpaceToInteract : MonoBehaviour
     protected GameObject interactTextCanvas;
     protected DataManager dataManager;
 
-    public UnityEvent OnInteractEvent;
+    public UnityEvent OnInteractStartEvent;
+    public UnityEvent OnInteractEndEvent;
+
+    /*[HideInInspector] */
+    public bool isInteracting = false;
 
     // Start is called before the first frame update. Overrided if inherrited (like TraderMenu)
     private void Start()
     {
-        dataManager = GameObject.Find("DataManager").GetComponent(typeof(DataManager)) as DataManager;
-        bgSprite = dataManager.beigeBackground;
-        font = dataManager.minecraftFont;
         MakeInteractText();
     }
 
     protected void MakeInteractText()
     {
+        dataManager = GameObject.Find("DataManager").GetComponent(typeof(DataManager)) as DataManager;
+        bgSprite = dataManager.beigeBackground;
+        font = dataManager.minecraftFont;
+
         BoxCollider2D collider = gameObject.AddComponent(typeof(BoxCollider2D)) as BoxCollider2D;
         collider.size = new Vector2(horizontalRange, verticalRange);
         collider.isTrigger = true;
@@ -56,14 +61,14 @@ public class SpaceToInteract : MonoBehaviour
             tmp.font = font;
         }
         {
-            GameObject bg = new GameObject("bg", typeof(RectTransform), typeof(CanvasRenderer), typeof(UnityEngine.UI.Image));
+            GameObject bg = new GameObject("bg", typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
             bg.transform.SetParent(interactTextCanvas.transform);
             RectTransform rectTransform = bg.GetComponent(typeof(RectTransform)) as RectTransform;
             rectTransform.anchorMin = Vector2.zero;
             rectTransform.anchorMax = Vector2.one;
             rectTransform.offsetMin = Vector2.zero;
             rectTransform.offsetMax = Vector2.zero;
-            UnityEngine.UI.Image image = bg.GetComponent(typeof(UnityEngine.UI.Image)) as UnityEngine.UI.Image;
+            Image image = bg.GetComponent(typeof(Image)) as Image;
             image.sprite = bgSprite;
         }
         interactTextCanvas.SetActive(false);
@@ -84,9 +89,18 @@ public class SpaceToInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactTextCanvas.active && Input.GetKeyDown(KeyCode.Space))
+        if (interactTextCanvas.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
-            OnInteractEvent.Invoke();
+            if (!isInteracting)
+            {
+                OnInteractStartEvent.Invoke();
+                isInteracting = true;
+            }
+            else
+            {
+                OnInteractEndEvent.Invoke();
+                isInteracting = false;
+            }
         }
     }
 }

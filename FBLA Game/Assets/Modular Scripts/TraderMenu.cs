@@ -9,11 +9,19 @@ public class TraderMenu : SpaceToInteract
     void Start()
     {
         MakeInteractText();
-        OnInteractEvent.AddListener(DisplayTraderUI);
+        OnInteractStartEvent.AddListener(DisplayTraderUI);
+        OnInteractEndEvent.AddListener(HideTraderUI);
     }
 
     void DisplayTraderUI()
     {
         PlayerMovement.playerCanMove = false;
+        dataManager.traderUI.SetActive(true);
+    }
+
+    void HideTraderUI()
+    {
+        PlayerMovement.playerCanMove = true;
+        dataManager.traderUI.SetActive(false);
     }
 }

@@ -13,4 +13,6 @@ public class DataManager : MonoBehaviour
     public Sprite beigeBackground;
     public TMP_FontAsset minecraftFont;
 
+    public GameObject traderUI;
+
 }

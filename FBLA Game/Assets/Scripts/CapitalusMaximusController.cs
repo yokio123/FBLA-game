@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CapitalusMaximusController : MonoBehaviour
 {
@@ -23,16 +24,33 @@ public class CapitalusMaximusController : MonoBehaviour
 
     List<string> trashTalkPhrases = new List<string>()
     {
-        "a",
-        "b",
-        "c",
-        "Ha ha, another great deal!"
+        "Another great deal, a rarity for you",
+        "Ha ha, my wealth grows in magnitudes",
+        "All in a day's work",
+        "Ha ha, another great deal!",
+        "It seems like you're lacking in wares",
+        "Your wallet is like a beggar's hat",
+        "My gold is to much for your penny pocket to handle",
+        "The wealth keeps flowing in like waves",
+        "Still trading wood peasant?",
+        "Money grows on trees, at least when you are me",
+        "You're like a broken record, repeating the same mistakes over and over again.",
+        "I can make more than you with my eyes closed",
+        "Do you even know what you're doing, or are you just making it up as you go?",
+        "You call that a strategy? I've seen better from a toddler playing with blocks!",
+        "Get a different job. Stocks are too complicated for you.",
+        "You call that a strategy? I've seen hatchlings make better decisions!",
+        "I am and will always be the richest dino"
     };
     string lastPhraseSelected = "";
+
+    [SerializeField] float timeSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = timeSpeed;
+
         trashTalkTMP = trashTalkGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         goldCounterTMP = goldCounterGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         timeTillRefresh = Random.Range(minRefreshWait, maxRefreshWait);
