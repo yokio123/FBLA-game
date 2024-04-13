@@ -44,13 +44,9 @@ public class CapitalusMaximusController : MonoBehaviour
     };
     string lastPhraseSelected = "";
 
-    [SerializeField] float timeSpeed = 5;
-
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = timeSpeed;
-
         trashTalkTMP = trashTalkGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         goldCounterTMP = goldCounterGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         timeTillRefresh = Random.Range(minRefreshWait, maxRefreshWait);
