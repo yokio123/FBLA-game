@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Talk : MonoBehaviour
 {
-    public GameObject gameObject;
     private bool In_Area = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,7 +19,7 @@ public class Talk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (In_Area == true && Input.GetKeyDown(KeyCode.Space)== true)
+        if (In_Area && Input.GetKeyDown(KeyCode.Space))
         {
            gameObject.SetActive(true);
         }

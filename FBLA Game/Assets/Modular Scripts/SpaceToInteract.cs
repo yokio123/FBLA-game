@@ -10,22 +10,27 @@ public class SpaceToInteract : MonoBehaviour
 {
     [SerializeField] int horizontalRange = 1;
     [SerializeField] int verticalRange = 1;
-    [SerializeField] float horizontalOffset = 2;
+    [SerializeField] float horizontalOffset = 1;
     [SerializeField] Sprite bgSprite;
     [SerializeField] TMP_FontAsset font;
-    GameObject interactTextCanvas;
+    protected GameObject interactTextCanvas;
 
     public UnityEvent OnInteractEvent;
 
-    // Start is called before the first frame update
-    void Start()
+    // Start is called before the first frame update. Overrided if inherrited (like TraderMenu)
+    private void Start()
+    {
+        MakeInteractText();
+    }
+
+    protected void MakeInteractText()
     {
         BoxCollider2D collider = gameObject.AddComponent(typeof(BoxCollider2D)) as BoxCollider2D;
         collider.size = new Vector2(horizontalRange, verticalRange);
         collider.isTrigger = true;
 
         {
-            interactTextCanvas = new GameObject("iToInteractPanel", typeof(RectTransform), typeof(Canvas), typeof(GraphicRaycaster));
+            interactTextCanvas = new GameObject("spaceToInteractPanel", typeof(RectTransform), typeof(Canvas), typeof(GraphicRaycaster));
             interactTextCanvas.transform.SetParent(transform);
             RectTransform rectTransform = interactTextCanvas.GetComponent(typeof(RectTransform)) as RectTransform;
             rectTransform.transform.SetLocalPositionAndRotation(new Vector3(0, horizontalOffset, 0), new Quaternion());
@@ -57,19 +62,19 @@ public class SpaceToInteract : MonoBehaviour
             UnityEngine.UI.Image image = bg.GetComponent(typeof(UnityEngine.UI.Image)) as UnityEngine.UI.Image;
             image.sprite = bgSprite;
         }
-        interactTextCanvas.active = false;
+        interactTextCanvas.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enter: " + collision.gameObject.name);
-        interactTextCanvas.active = true;
+        if (collision.gameObject.tag != "Player") return;
+        interactTextCanvas.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Exit: " + collision.gameObject.name);
-        interactTextCanvas.active = false;
+        if (collision.gameObject.tag != "Player") return;
+        interactTextCanvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -78,7 +83,6 @@ public class SpaceToInteract : MonoBehaviour
         if (interactTextCanvas.active && Input.GetKeyDown(KeyCode.Space))
         {
             OnInteractEvent.Invoke();
-            Debug.Log("INTERACT!");
         }
     }
 }
