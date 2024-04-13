@@ -11,15 +11,19 @@ public class SpaceToInteract : MonoBehaviour
     [SerializeField] int horizontalRange = 1;
     [SerializeField] int verticalRange = 1;
     [SerializeField] float horizontalOffset = 1;
-    [SerializeField] Sprite bgSprite;
-    [SerializeField] TMP_FontAsset font;
+    Sprite bgSprite;
+    TMP_FontAsset font;
     protected GameObject interactTextCanvas;
+    protected DataManager dataManager;
 
     public UnityEvent OnInteractEvent;
 
     // Start is called before the first frame update. Overrided if inherrited (like TraderMenu)
     private void Start()
     {
+        dataManager = GameObject.Find("DataManager").GetComponent(typeof(DataManager)) as DataManager;
+        bgSprite = dataManager.beigeBackground;
+        font = dataManager.minecraftFont;
         MakeInteractText();
     }
 

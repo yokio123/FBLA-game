@@ -21,8 +21,6 @@ public class CapitalusMaximusController : MonoBehaviour
     int minGoldOnRefresh = 3;
     int maxGoldOnRefresh = 25;
 
-    public float scaleTime = 1;
-
     List<string> trashTalkPhrases = new List<string>()
     {
         "a",
@@ -35,8 +33,6 @@ public class CapitalusMaximusController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = scaleTime;
-
         trashTalkTMP = trashTalkGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         goldCounterTMP = goldCounterGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         timeTillRefresh = Random.Range(minRefreshWait, maxRefreshWait);
