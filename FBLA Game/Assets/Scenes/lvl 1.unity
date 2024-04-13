@@ -2929,6 +2929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashTalkGameObject: {fileID: 210743386}
   goldCounterGameObject: {fileID: 554483066}
+  timeSpeed: 100
 --- !u!1 &648190016
 GameObject:
   m_ObjectHideFlags: 0
