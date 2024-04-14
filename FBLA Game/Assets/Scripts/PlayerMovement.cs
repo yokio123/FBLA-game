@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
     }
       void FixedUpdate()
     {
-        if (playerCanMove) Controller.Move(XMove * Time.fixedDeltaTime, false, Jumps);
-        else Controller.Move(0, false, false);
+        if (playerCanMove) { Controller.Move(XMove * Time.fixedDeltaTime, false, Jumps); Debug.Log("can move"); }
+        else { Controller.Move(0, false, false); Debug.Log("can't move"); }
         animator.SetBool("Jumping", false);
         Jumps = false;
 
