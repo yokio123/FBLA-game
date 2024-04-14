@@ -10,6 +10,8 @@ public class scoreboard : MonoBehaviour
 {
     public TMP_Text winLabel;
     public TMP_InputField inputField;
+
+    int score;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,18 @@ public class scoreboard : MonoBehaviour
         {
             name = inputField.text.ToString();
 
-            PlayerPrefs.SetInt(name, gold_singleton.Gold * 100);
+            score = gold_singleton.Gold * 100;
+            List<string> row = new() { name, score.ToString() };
+            List<List<string>> newScoreboard;
+            /*if (SaveLoadManager.HasSaved())
+            {
+                List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
+                oldScoreboard.Add(row);
+                //oldScoreboard.Sort();
+            } else
+            {
+                newScoreboard = new() { row };
+            }*/
             SceneManager.LoadScene("scoreboard");
         }
 
