@@ -50,6 +50,7 @@ public class CapitalusMaximusController : MonoBehaviour
         trashTalkTMP = trashTalkGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         goldCounterTMP = goldCounterGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         timeTillRefresh = Random.Range(minRefreshWait, maxRefreshWait);
+        goldCounterTMP.text = $"Gold: {gold}";
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class CapitalusMaximusController : MonoBehaviour
         List<string> filteredList = trashTalkPhrases.Where((phrase) => (phrase != lastPhraseSelected)).ToList(); // Ensure the phrase is never the same
         lastPhraseSelected = filteredList[Random.Range(0, trashTalkPhrases.Count - 1)];
         trashTalkTMP.text = lastPhraseSelected;
-        float goldMultiplier = 3f * (currentTimeElapsed / Timer.totalTime) * CharacterController2D.level;
+        float goldMultiplier = 4f * (currentTimeElapsed / Timer.totalTime) * CharacterController2D.level;
         gold += Mathf.FloorToInt(Random.Range(minGoldOnRefresh, maxGoldOnRefresh) * goldMultiplier);
         goldCounterTMP.text = $"Gold: {gold}";
     }
