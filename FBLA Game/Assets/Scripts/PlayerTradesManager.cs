@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerTradesManager : MonoBehaviour
 {
+    
     public static int gold = 0;
     int startingGold = 50;
 
@@ -16,5 +17,6 @@ public class PlayerTradesManager : MonoBehaviour
     void Start()
     {
         gold = startingGold;
+
     }
 }

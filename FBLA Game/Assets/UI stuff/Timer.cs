@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -39,6 +40,13 @@ public class Timer : MonoBehaviour
             timeLeft = 0f;
             primaryTmp.text = "0:00";
             secondaryTmp.text = ".00";
+            if (CapitalusMaximusController.gold > PlayerTradesManager.gold)
+            {
+                gold_singleton.Gold= PlayerTradesManager.gold;
+                gold_singleton.win = false;
+                SceneManager.LoadScene("name input");
+
+            }
         }
     }
 }

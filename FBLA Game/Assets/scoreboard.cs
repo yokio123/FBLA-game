@@ -21,6 +21,9 @@ public class scoreboard : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)==true && inputField.text.Length > 0)
         {
+            name = inputField.text.ToString();
+
+            PlayerPrefs.SetInt(name, gold_singleton.Gold * 100);
             SceneManager.LoadScene("scoreboard");
         }
 

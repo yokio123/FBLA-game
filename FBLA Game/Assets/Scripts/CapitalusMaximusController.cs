@@ -18,7 +18,7 @@ public class CapitalusMaximusController : MonoBehaviour
     float minRefreshWait = 3;
     float maxRefreshWait = 15;
 
-    static int gold = 0;
+    public static int gold = 0;
     int minGoldOnRefresh = 3;
     int maxGoldOnRefresh = 25;
 
