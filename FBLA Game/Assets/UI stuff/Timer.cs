@@ -51,6 +51,7 @@ public class Timer : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         gold_singleton.Gold = PlayerTradesManager.gold;
+        PlayerMovement.playerCanMove = true;
         if (CapitalusMaximusController.gold > PlayerTradesManager.gold)
         {
             CapitalusMaximusController.gold = 0;

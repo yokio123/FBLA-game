@@ -33,6 +33,7 @@ public class scoreboard : MonoBehaviour
             score = gold_singleton.Gold * 100;
             List<string> row = new() { name, score.ToString() };
             List<List<string>> newScoreboard;
+<<<<<<< Updated upstream
             /*if (SaveLoadManager.HasSaved())
             {
                 List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
@@ -42,6 +43,16 @@ public class scoreboard : MonoBehaviour
             {
                 newScoreboard = new() { row };
             }*/
+=======
+            if (SaveLoadManager.HasSaved())
+            {
+                List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
+
+            } else
+            {
+                newScoreboard = new() { row };
+            }
+>>>>>>> Stashed changes
             SceneManager.LoadScene("scoreboard");
         }
 
