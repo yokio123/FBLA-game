@@ -134,7 +134,7 @@ public class TraderMenu : SpaceToInteract
             } // Player can't afford it
             tradeDirection = 1;
         }
-        tradeQuantity -= tradeDirection;
+        tradeQuantity -= 1;
         switch (itemType)
         {
             case ItemType.Wood:
