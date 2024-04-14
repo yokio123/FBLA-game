@@ -73,7 +73,7 @@ public class CapitalusMaximusController : MonoBehaviour
         List<string> filteredList = trashTalkPhrases.Where((phrase) => (phrase != lastPhraseSelected)).ToList(); // Ensure the phrase is never the same
         lastPhraseSelected = filteredList[Random.Range(0, trashTalkPhrases.Count - 1)];
         trashTalkTMP.text = lastPhraseSelected;
-        float goldMultiplier = 3f * (currentTimeElapsed / Timer.totalTime);
+        float goldMultiplier = 3f * (currentTimeElapsed / Timer.totalTime) * CharacterController2D.level;
         gold += Mathf.FloorToInt(Random.Range(minGoldOnRefresh, maxGoldOnRefresh) * goldMultiplier);
         goldCounterTMP.text = $"Gold: {gold}";
     }
