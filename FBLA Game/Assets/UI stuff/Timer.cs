@@ -15,6 +15,8 @@ public class Timer : MonoBehaviour
     TextMeshProUGUI primaryTmp;
     TextMeshProUGUI secondaryTmp;
 
+    bool gameHasAlreadyEnded = false;
+
     private void Start()
     {
         timeLeft = totalTime;
@@ -35,20 +37,32 @@ public class Timer : MonoBehaviour
             int decimals = Mathf.FloorToInt(((timeLeft % 60) % 1) * 100);
             primaryTmp.text = $"{minutes}:{seconds:D2}";
             secondaryTmp.text = $".{decimals:D2}";
-        } else
+        } else if (!gameHasAlreadyEnded)
         {
+            gameHasAlreadyEnded = true;
             timeLeft = 0f;
             primaryTmp.text = "0:00";
             secondaryTmp.text = ".00";
-            if (CapitalusMaximusController.gold > PlayerTradesManager.gold)
-            {
-                gold_singleton.Gold= PlayerTradesManager.gold;
-                gold_singleton.win = false;
-                SceneManager.LoadScene("name input");
-            } else
-            {
-                SceneManager.LoadScene("lvl 2");
-            }
+            StartCoroutine(EndRound());
+        }
+    }
+
+    private IEnumerator EndRound()
+    {
+        yield return new WaitForSeconds(3f);
+        gold_singleton.Gold = PlayerTradesManager.gold;
+        if (CapitalusMaximusController.gold < PlayerTradesManager.gold) // !!!!FIX THIS!!!!
+        {
+            gold_singleton.win = false;
+            SceneManager.LoadScene("name input");
+        } else if (CharacterController2D.level == 1)
+        {
+            gold_singleton.win = true;
+            SceneManager.LoadScene("lvl 1-lvl 2");
+        } else if (CharacterController2D.level == 2)
+        {
+            gold_singleton.win = true;
+            SceneManager.LoadScene("name input");
         }
     }
 }

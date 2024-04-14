@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class NextScene : MonoBehaviour
 {
+    [SerializeField] string nextScene = "tutorial";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,7 @@ public class NextScene : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("tutorial");
+            SceneManager.LoadScene(nextScene);
         }
     }
 }

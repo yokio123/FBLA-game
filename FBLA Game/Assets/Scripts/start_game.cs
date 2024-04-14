@@ -8,7 +8,7 @@ public class start_game : MonoBehaviour
     private bool In_Area = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        In_Area = true;
+        if (collision.gameObject.name == "Player") In_Area = true;
     }
     // Start is called before the first frame update
     void Start()

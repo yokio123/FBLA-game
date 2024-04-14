@@ -18,7 +18,7 @@ public class TraderMenu : SpaceToInteract
     float timeToLastRefresh = 0;
     float timeTillRefresh;
     float minRefreshWait = 3;
-    float maxRefreshWait = 15;
+    float maxRefreshWait = 10;
 
     List<string> tradingPhrases = new List<string>()
     {
@@ -195,7 +195,7 @@ public class TraderMenu : SpaceToInteract
 
     void GenerateTradeDetails()
     {
-        multiplier = 3 * (Timer.timeElapsed / Timer.totalTime);
+        multiplier = 3 * (Timer.timeElapsed / Timer.totalTime) * CharacterController2D.level;
         if (multiplier < 1) multiplier = 1;
         if (isBuyer)
         {
@@ -210,12 +210,6 @@ public class TraderMenu : SpaceToInteract
 
         tradeQuantity = Mathf.CeilToInt(Random.Range(tradeData[itemType][4], tradeData[itemType][5]) * multiplier);
 
-    }
-
-    T RandomEnumValue<T>()
-    {
-        System.Array arr = System.Enum.GetValues(typeof(T));
-        return (T)arr.GetValue(Random.Range(0, arr.Length));
     }
 
     void RefreshTraderUI()
