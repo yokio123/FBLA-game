@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 public class Talk : MonoBehaviour
 {
     private bool In_Area = false;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         In_Area = true;
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class Talk : MonoBehaviour
     {
         if (In_Area && Input.GetKeyDown(KeyCode.Space))
         {
-           gameObject.SetActive(true);
+           gameObject.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 }
