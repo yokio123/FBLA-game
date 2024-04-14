@@ -33,12 +33,12 @@ public class InventoryUIManager : MonoBehaviour
         ironCountText.text = $"Count: {PlayerTradesManager.ironCount}";
         gemCountText.text = $"Count: {PlayerTradesManager.gemCount}";
 
-        if (Input.GetKey(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             PlayerMovement.playerCanMove = false;
             CharacterController2D.canInteract = false;
             inventoryUI.SetActive(true);
-        } else
+        } else if (Input.GetKeyUp(KeyCode.E))
         {
             PlayerMovement.playerCanMove = true;
             CharacterController2D.canInteract = true;
