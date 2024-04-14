@@ -6,11 +6,12 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     public GameObject traderUI;
+    public GameObject traderUITraderIcon;
     public GameObject traderUINameText;
     public GameObject traderUIPhraseText;
     public GameObject traderUITradeIcon;
     public GameObject traderUITradeInfoText;
-    public GameObject traderUIButtonText;
+    public GameObject traderUITradeButton;
 
     public Sprite woodIcon;
     public Sprite stoneIcon;

@@ -381,7 +381,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Nico
-  isBuyer: 0
+  isBuyer: 1
   itemType: 2
 --- !u!1 &122563598
 GameObject:
@@ -648,7 +648,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Olaf
-  isBuyer: 0
+  isBuyer: 1
   itemType: 0
 --- !u!1 &138618416
 GameObject:
@@ -1142,7 +1142,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Cole
-  isBuyer: 0
+  isBuyer: 1
   itemType: 3
 --- !u!1 &210743386
 GameObject:
@@ -2738,8 +2738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -14.963776}
-  m_SizeDelta: {x: -9.5, y: -39.427498}
+  m_AnchoredPosition: {x: 0, y: -19.8394}
+  m_SizeDelta: {x: -9.5, y: -49.1789}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622306550
 MonoBehaviour:
@@ -5041,11 +5041,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traderUI: {fileID: 610134238}
+  traderUITraderIcon: {fileID: 1787428384}
   traderUINameText: {fileID: 739065211}
   traderUIPhraseText: {fileID: 622306548}
   traderUITradeIcon: {fileID: 1497623168}
   traderUITradeInfoText: {fileID: 1507584205}
-  traderUIButtonText: {fileID: 1244952989}
+  traderUITradeButton: {fileID: 1244952989}
   woodIcon: {fileID: 21300000, guid: 745841d840a28d145b97dd0acfa07034, type: 2}
   stoneIcon: {fileID: 21300000, guid: ff98f06e0faa925479266112508a316b, type: 2}
   ironIcon: {fileID: 21300000, guid: 772040ec30a6d3c489ae016d5049a151, type: 2}
@@ -7022,7 +7023,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Doux
-  isBuyer: 0
+  isBuyer: 1
   itemType: 1
 --- !u!1 &1449224909
 GameObject:
@@ -7372,7 +7373,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Selling For:
 
-    XX coins'
+    XX coins
+
+    Stock: XX'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
   m_sharedMaterial: {fileID: -6631677070203404234, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
@@ -7707,7 +7710,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Sena
-  isBuyer: 1
+  isBuyer: 0
   itemType: 0
 --- !u!1 &1533911356
 GameObject:
@@ -7883,7 +7886,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Loki
-  isBuyer: 1
+  isBuyer: 0
   itemType: 0
 --- !u!1 &1539727839
 GameObject:
@@ -9347,7 +9350,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Kira
-  isBuyer: 1
+  isBuyer: 0
   itemType: 0
 --- !u!1 &1841352175
 GameObject:
@@ -9851,7 +9854,7 @@ MonoBehaviour:
       m_Calls: []
   isInteracting: 0
   traderName: Vita
-  isBuyer: 1
+  isBuyer: 0
   itemType: 0
 --- !u!1 &1926226966
 GameObject:
