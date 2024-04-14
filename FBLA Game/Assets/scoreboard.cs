@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -31,28 +32,21 @@ public class scoreboard : MonoBehaviour
             name = inputField.text.ToString();
 
             score = gold_singleton.Gold * 100;
-            List<string> row = new() { name, score.ToString() };
+            List<string> newRow = new() { name, score.ToString() };
             List<List<string>> newScoreboard;
-<<<<<<< Updated upstream
-            /*if (SaveLoadManager.HasSaved())
-            {
-                List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
-                oldScoreboard.Add(row);
-                //oldScoreboard.Sort();
-            } else
-            {
-                newScoreboard = new() { row };
-            }*/
-=======
             if (SaveLoadManager.HasSaved())
             {
                 List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
-
+                oldScoreboard.Add(newRow);
+                newScoreboard = oldScoreboard.OrderByDescending((List<string> row) =>
+                {
+                    return row[1];
+                }).ToList();
             } else
             {
-                newScoreboard = new() { row };
+                newScoreboard = new() { newRow };
             }
->>>>>>> Stashed changes
+            SaveLoadManager.Save(new GameState(newScoreboard));
             SceneManager.LoadScene("scoreboard");
         }
 
