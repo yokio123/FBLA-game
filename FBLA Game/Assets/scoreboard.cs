@@ -19,7 +19,7 @@ public class scoreboard : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space)==true && inputField.text.Length() > 0)
+        if (Input.GetKeyDown(KeyCode.Space)==true && inputField.text.Length > 0)
         {
             SceneManager.LoadScene("scoreboard");
         }
