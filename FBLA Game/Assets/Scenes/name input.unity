@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e9a64577bf8c24fac059b63fe57e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winLabel: {fileID: 1955303513}
   inputField: {fileID: 1252200496}
 --- !u!1 &1252200494
 GameObject:
@@ -1416,7 +1417,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game Over \nEnter your name "
+  m_text: 'Game Over, You Lose
+
+    Enter your name '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
   m_sharedMaterial: {fileID: -6631677070203404234, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
