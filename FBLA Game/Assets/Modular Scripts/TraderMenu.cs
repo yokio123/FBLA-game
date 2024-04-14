@@ -81,6 +81,85 @@ public class TraderMenu : SpaceToInteract
         }
     }; // tradeData[itemType][0 = min buy price, 1 = max buy price, 2 = min sell price, 3 = max sell price, 4: min quantity, 5: max quantity]
 
+    void DoTrade()
+    {
+        if (tradeQuantity == 0)
+        {
+            TradeFailsAnimation();
+            return;
+        } // Nothing to trade
+        int tradeDirection = 0;
+        if (isBuyer)
+        {
+            // Buying an item from the player
+            switch (itemType)
+            {
+                case ItemType.Wood:
+                    if (PlayerTradesManager.woodCount == 0)
+                    {
+                        TradeFailsAnimation();
+                        return;
+                    } // Player can't afford it
+                    break;
+                case ItemType.Stone:
+                    if (PlayerTradesManager.stoneCount == 0)
+                    {
+                        TradeFailsAnimation();
+                        return;
+                    } // Player can't afford it
+                    break;
+                case ItemType.Iron:
+                    if (PlayerTradesManager.ironCount == 0)
+                    {
+                        TradeFailsAnimation();
+                        return;
+                    } // Player can't afford it
+                    break;
+                case ItemType.Gem:
+                    if (PlayerTradesManager.gemCount == 0)
+                    {
+                        TradeFailsAnimation();
+                        return;
+                    } // Player can't afford it
+                    break;
+            }
+            tradeDirection = -1;
+        } else
+        {
+            // Selling an item to the player
+            if (tradePrice > PlayerTradesManager.gold)
+            {
+                TradeFailsAnimation();
+                return;
+            } // Player can't afford it
+            tradeDirection = 1;
+        }
+        tradeQuantity -= tradeDirection;
+        switch (itemType)
+        {
+            case ItemType.Wood:
+                PlayerTradesManager.woodCount += tradeDirection;
+                break;
+            case ItemType.Stone:
+                PlayerTradesManager.stoneCount += tradeDirection;
+                break;
+            case ItemType.Iron:
+                PlayerTradesManager.ironCount += tradeDirection;
+                break;
+            case ItemType.Gem:
+                PlayerTradesManager.gemCount += tradeDirection;
+                break;
+        }
+        PlayerTradesManager.gold -= tradePrice * tradeDirection;
+        RefreshTraderUI();
+    }
+
+    void TradeFailsAnimation()
+    {
+        Animator animController = dataManager.traderUITradeButton.GetComponent(typeof(Animator)) as Animator;
+        animController.SetTrigger("Trade Fail");
+    }
+
     void Refresh()
     {
         timeToLastRefresh += timeTillRefresh;
@@ -128,7 +207,7 @@ public class TraderMenu : SpaceToInteract
     T RandomEnumValue<T>()
     {
         System.Array arr = System.Enum.GetValues(typeof(T));
-        return (T)arr.GetValue(Random.Range(0, arr.Length - 1));
+        return (T)arr.GetValue(Random.Range(0, arr.Length));
     }
 
     void RefreshTraderUI()
@@ -145,7 +224,7 @@ public class TraderMenu : SpaceToInteract
         {
             TextMeshProUGUI tmp = dataManager.traderUITradeInfoText.GetComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             string text = "";
-            if (isBuyer) text += $"Buyinh for:\n{tradePrice} coins";
+            if (isBuyer) text += $"Buying for:\n{tradePrice} coins";
             else text += $"Selling for:\n{tradePrice} coins";
             text += $"\nStock: {tradeQuantity}";
             tmp.text = text;
@@ -154,6 +233,11 @@ public class TraderMenu : SpaceToInteract
             TextMeshProUGUI tmp = dataManager.traderUITradeButton.transform.GetChild(0).GetComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             if (isBuyer) tmp.text = $"Sell 1";
             else tmp.text = $"Buy 1";
+        }
+        {
+            Button button = dataManager.traderUITradeButton.GetComponent(typeof(Button)) as Button;
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(DoTrade);
         }
         {
             SpriteRenderer spriteRenderer = gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;

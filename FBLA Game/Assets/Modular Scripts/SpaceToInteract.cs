@@ -88,7 +88,7 @@ public class SpaceToInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && CharacterController2D.canInteract)
         {
             if (!isInteracting && interactTextCanvas.activeSelf)
             {
