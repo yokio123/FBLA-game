@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lvl 1.unity
     guid: 52b20c303543b40459dfd476955796ae
+  - enabled: 1
+    path: Assets/Scenes/name input.unity
+    guid: 76a69afdb62b5934d90e2a685252c6a1
+  - enabled: 1
+    path: Assets/Scenes/scoreboard.unity
+    guid: d951d2c2d16ac3740a66b0566ddf334a
   m_configObjects: {}
