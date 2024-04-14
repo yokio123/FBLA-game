@@ -51,7 +51,7 @@ public class Timer : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         gold_singleton.Gold = PlayerTradesManager.gold;
-        if (CapitalusMaximusController.gold < PlayerTradesManager.gold) // !!!!FIX THIS!!!!
+        if (CapitalusMaximusController.gold > PlayerTradesManager.gold)
         {
             gold_singleton.win = false;
             SceneManager.LoadScene("name input");

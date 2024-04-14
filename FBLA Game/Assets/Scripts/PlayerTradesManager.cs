@@ -16,7 +16,8 @@ public class PlayerTradesManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gold = startingGold;
+        if (CharacterController2D.level == 1) gold = startingGold;
+        else gold = gold_singleton.Gold;
 
     }
 }
