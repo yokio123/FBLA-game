@@ -24,6 +24,7 @@ public static class SaveLoadManager
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             GameState state = formatter.Deserialize(stream) as GameState;
+            stream.Close();
             return state;
         } else
         {
