@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     public float Speed = 40f;
     float XMove = 0f;
     bool Jumps = false;
+
+    public static bool playerCanMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
     }
       void FixedUpdate()
     {
-        Controller.Move(XMove * Time.fixedDeltaTime, false, Jumps);
+        if (playerCanMove) Controller.Move(XMove * Time.fixedDeltaTime, false, Jumps);
+        else Controller.Move(0, false, false);
         animator.SetBool("Jumping", false);
         Jumps = false;
 
