@@ -113,12 +113,12 @@ public class TraderMenu : SpaceToInteract
         if (isBuyer)
         {
             // Buyer
-            tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][0], tradeData[itemType][1]) * multiplier);
+            tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][2], tradeData[itemType][3]));
         } else
         {
             // Seller
             itemType = RandomEnumValue<ItemType>();
-            tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][2], tradeData[itemType][3]) * multiplier);
+            tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][0], tradeData[itemType][1]));
         }
 
         tradeQuantity = Mathf.CeilToInt(Random.Range(tradeData[itemType][4], tradeData[itemType][5]) * multiplier);
@@ -145,15 +145,15 @@ public class TraderMenu : SpaceToInteract
         {
             TextMeshProUGUI tmp = dataManager.traderUITradeInfoText.GetComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             string text = "";
-            if (isBuyer) text += $"Selling for:\n{tradePrice} coins";
-            else text += $"Buying for:\n{tradePrice} coins";
+            if (isBuyer) text += $"Buyinh for:\n{tradePrice} coins";
+            else text += $"Selling for:\n{tradePrice} coins";
             text += $"\nStock: {tradeQuantity}";
             tmp.text = text;
         }
         {
             TextMeshProUGUI tmp = dataManager.traderUITradeButton.transform.GetChild(0).GetComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
-            if (isBuyer) tmp.text = $"Buy 1";
-            else tmp.text = $"Sell 1";
+            if (isBuyer) tmp.text = $"Sell 1";
+            else tmp.text = $"Buy 1";
         }
         {
             SpriteRenderer spriteRenderer = gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
