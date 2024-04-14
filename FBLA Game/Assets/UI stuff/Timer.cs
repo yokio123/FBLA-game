@@ -45,7 +45,9 @@ public class Timer : MonoBehaviour
                 gold_singleton.Gold= PlayerTradesManager.gold;
                 gold_singleton.win = false;
                 SceneManager.LoadScene("name input");
-
+            } else
+            {
+                SceneManager.LoadScene("lvl 2");
             }
         }
     }

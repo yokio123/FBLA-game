@@ -8,10 +8,15 @@ using UnityEngine.UI;
 
 public class scoreboard : MonoBehaviour
 {
+    public TMP_Text winLabel;
     public TMP_InputField inputField;
     // Start is called before the first frame update
     void Start()
     {
+    if (gold_singleton.win == true)
+        {
+            winLabel.text = ("Game Over, You Win");
+        }
         
     }
 
