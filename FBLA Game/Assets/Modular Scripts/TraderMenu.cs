@@ -1,3 +1,4 @@
+using KaimiraGames;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -80,6 +81,8 @@ public class TraderMenu : SpaceToInteract
             }
         }
     }; // tradeData[itemType][0 = min buy price, 1 = max buy price, 2 = min sell price, 3 = max sell price, 4: min quantity, 5: max quantity]
+
+    WeightedList<ItemType> randomItemGen = new();
 
     void DoTrade()
     {
@@ -170,6 +173,11 @@ public class TraderMenu : SpaceToInteract
 
     void Start()
     {
+        randomItemGen.Add(ItemType.Wood, 50);
+        randomItemGen.Add(ItemType.Stone, 25);
+        randomItemGen.Add(ItemType.Iron, 20);
+        randomItemGen.Add(ItemType.Gem, 5);
+
         MakeInteractText();
         OnInteractStartEvent.AddListener(DisplayTraderUI);
         OnInteractEndEvent.AddListener(HideTraderUI);
@@ -196,7 +204,7 @@ public class TraderMenu : SpaceToInteract
         } else
         {
             // Seller
-            itemType = RandomEnumValue<ItemType>();
+            itemType = randomItemGen.Next();
             tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][0], tradeData[itemType][1]));
         }
 
@@ -224,9 +232,8 @@ public class TraderMenu : SpaceToInteract
         {
             TextMeshProUGUI tmp = dataManager.traderUITradeInfoText.GetComponent(typeof(TextMeshProUGUI)) as TextMeshProUGUI;
             string text = "";
-            if (isBuyer) text += $"Buying for:\n{tradePrice} coins";
-            else text += $"Selling for:\n{tradePrice} coins";
-            text += $"\nStock: {tradeQuantity}";
+            if (isBuyer) text += $"Buying for:\n{tradePrice} coins\nWant: {tradeQuantity}";
+            else text += $"Selling for:\n{tradePrice} coins\nStock: {tradeQuantity}";
             tmp.text = text;
         }
         {

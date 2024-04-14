@@ -58,7 +58,8 @@ public class CapitalusMaximusController : MonoBehaviour
         currentTimeElapsed = Timer.timeElapsed;
         if (currentTimeElapsed >= Timer.totalTime)
         {
-            trashTalkTMP.text = "I win!";
+            if (PlayerTradesManager.gold < gold) trashTalkTMP.text = "I win!";
+            else trashTalkTMP.text = "Impossible, how could I lose?";
         } else if (currentTimeElapsed >= timeToLastRefresh + timeTillRefresh)
         {
             Refresh();

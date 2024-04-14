@@ -1341,7 +1341,7 @@ Transform:
   m_GameObject: {fileID: 229995541}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 333.34, y: -81.58, z: -6.302148}
+  m_LocalPosition: {x: 459.5, y: -81.58, z: -6.302148}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2036,7 +2036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hold I to see what goods you have in your inventory
+  m_text: Hold E to see what goods you have in your inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
   m_sharedMaterial: {fileID: -6631677070203404234, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
@@ -31007,7 +31007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to the tutorial use the arrow keys to move forward
+  m_text: Welcome to the tutorial use the WASD or arrow keys to move forward
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
   m_sharedMaterial: {fileID: -6631677070203404234, guid: cdbfa59ab23549744b7daa3fb3710cad, type: 2}
