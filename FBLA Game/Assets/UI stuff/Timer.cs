@@ -53,6 +53,7 @@ public class Timer : MonoBehaviour
         gold_singleton.Gold = PlayerTradesManager.gold;
         if (CapitalusMaximusController.gold > PlayerTradesManager.gold)
         {
+            CapitalusMaximusController.gold = 0;
             gold_singleton.win = false;
             SceneManager.LoadScene("name input");
         } else if (CharacterController2D.level == 1)
