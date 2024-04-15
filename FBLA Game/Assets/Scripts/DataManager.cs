@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,8 +16,9 @@ public class DataManager : MonoBehaviour
     public GameObject traderUITradeButton;
     [HideInInspector] public UnityEvent reloadTraders;
 
-    public AudioSource ka_ching;
-    public AudioSource eror;
+    [HideInInspector] public AudioSource audioPlayer;
+    public AudioClip ka_ching;
+    public AudioClip eror;
 
     public Sprite woodIcon;
     public Sprite stoneIcon;
@@ -25,4 +27,15 @@ public class DataManager : MonoBehaviour
 
     public Sprite beigeBackground;
     public TMP_FontAsset minecraftFont;
+
+    void Start()
+    {
+        audioPlayer = gameObject.GetOrAddComponent<AudioSource>();
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioPlayer.clip = clip;
+        audioPlayer.Play();
+    }
 }
