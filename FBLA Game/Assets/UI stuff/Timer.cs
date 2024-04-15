@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float timeLeft; // Starts at 3 minutes, is in seconds
-    public static float timeElapsed; // In seconds
+    public static float timeElapsed = 0; // In seconds
     public static float totalTime = 3 * 60; // 3 minutes in seconds
     public float startTime; // The time when the timer was instantiated, in seconds
     [SerializeField] GameObject secondaryTextGameObject;
@@ -17,8 +19,13 @@ public class Timer : MonoBehaviour
 
     bool gameHasAlreadyEnded = false;
 
+    DataManager dataManager;
+
     private void Start()
     {
+        dataManager = GameObject.Find("DataManager").GetComponent(typeof(DataManager)) as DataManager;
+
+        timeElapsed = 0;
         timeLeft = totalTime;
         startTime = Time.time;
 
@@ -64,10 +71,18 @@ public class Timer : MonoBehaviour
             SceneManager.LoadScene("name input");
         } else if (CharacterController2D.level == 1)
         {
+            timeLeft = totalTime;
+            startTime = Time.time;
+            timeElapsed = 0;
+            dataManager.reloadTraders.Invoke();
             gold_singleton.win = true;
             SceneManager.LoadScene("lvl 1-lvl 2");
         } else if (CharacterController2D.level == 2)
         {
+            timeLeft = totalTime;
+            startTime = Time.time;
+            timeElapsed = 0;
+            dataManager.reloadTraders.Invoke();
             gold_singleton.win = true;
             SceneManager.LoadScene("name input");
         }

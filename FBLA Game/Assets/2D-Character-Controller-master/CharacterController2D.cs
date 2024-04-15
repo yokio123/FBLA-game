@@ -37,6 +37,8 @@ public class CharacterController2D : MonoBehaviour
 
 	private void Awake()
 	{
+		canInteract = true;
+
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
