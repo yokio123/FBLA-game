@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CapitalusMaximusController : MonoBehaviour
 {
+    
+
     [SerializeField] GameObject trashTalkGameObject;
     [SerializeField] GameObject goldCounterGameObject;
     TextMeshPro trashTalkTMP;
@@ -47,10 +50,15 @@ public class CapitalusMaximusController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SceneManager.GetActiveScene().name == "lvl 1" )
+        {
+            gold = 0;
+        }
+        
         trashTalkTMP = trashTalkGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         goldCounterTMP = goldCounterGameObject.GetComponent(typeof(TextMeshPro)) as TextMeshPro;
         timeTillRefresh = Random.Range(minRefreshWait, maxRefreshWait);
-        goldCounterTMP.text = $"Gold: {gold}";
+        goldCounterTMP.text = $"Gold: {gold}";    
     }
 
     // Update is called once per frame

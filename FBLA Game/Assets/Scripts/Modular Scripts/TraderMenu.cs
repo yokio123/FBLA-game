@@ -212,7 +212,7 @@ public class TraderMenu : SpaceToInteract
             tradePrice = Mathf.CeilToInt(Random.Range(tradeData[itemType][0], tradeData[itemType][1]));
         }
 
-        tradeQuantity = Mathf.CeilToInt(/*Random.Range(tradeData[itemType][4], tradeData[itemType][5]) * */multiplier);
+        tradeQuantity = Mathf.CeilToInt(Random.Range(tradeData[itemType][4], tradeData[itemType][5]) * multiplier);
 
     }
 
