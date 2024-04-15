@@ -5781,6 +5781,8 @@ MonoBehaviour:
   reloadTraders:
     m_PersistentCalls:
       m_Calls: []
+  ka_ching: {fileID: 1002290580}
+  eror: {fileID: 1002290579}
   woodIcon: {fileID: 21300000, guid: 745841d840a28d145b97dd0acfa07034, type: 2}
   stoneIcon: {fileID: 21300000, guid: ff98f06e0faa925479266112508a316b, type: 2}
   ironIcon: {fileID: 21300000, guid: 772040ec30a6d3c489ae016d5049a151, type: 2}
