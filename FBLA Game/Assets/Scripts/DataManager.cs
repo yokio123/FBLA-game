@@ -15,6 +15,9 @@ public class DataManager : MonoBehaviour
     public GameObject traderUITradeButton;
     [HideInInspector] public UnityEvent reloadTraders;
 
+    public AudioSource ka_ching;
+    public AudioSource eror;
+
     public Sprite woodIcon;
     public Sprite stoneIcon;
     public Sprite ironIcon;

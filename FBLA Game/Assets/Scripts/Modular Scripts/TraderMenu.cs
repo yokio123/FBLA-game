@@ -155,12 +155,14 @@ public class TraderMenu : SpaceToInteract
         }
         PlayerTradesManager.gold -= tradePrice * tradeDirection;
         RefreshTraderUI();
+        dataManager.ka_ching.Play();
     }
 
     void TradeFailsAnimation()
     {
         Animator animController = dataManager.traderUITradeButton.GetComponent(typeof(Animator)) as Animator;
         animController.SetTrigger("Trade Fail");
+        dataManager.eror.Play();
     }
 
     void Refresh()
