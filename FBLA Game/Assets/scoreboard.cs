@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class scoreboard : MonoBehaviour
 {
@@ -38,10 +39,7 @@ public class scoreboard : MonoBehaviour
             {
                 List<List<string>> oldScoreboard = SaveLoadManager.Load().leaderboard;
                 oldScoreboard.Add(newRow);
-                newScoreboard = oldScoreboard.OrderByDescending((List<string> row) =>
-                {
-                    return row[1];
-                }).ToList();
+                newScoreboard = SortScoreboard(oldScoreboard);
             } else
             {
                 newScoreboard = new() { newRow };
@@ -50,6 +48,20 @@ public class scoreboard : MonoBehaviour
             SceneManager.LoadScene("scoreboard");
         }
 
-
+        List<List<string>> SortScoreboard(List<List<string>> scoreboard)
+        {
+            scoreboard.Sort((List<string> x, List<string> y) =>
+            {
+                if (Convert.ToInt32(x[1]) < Convert.ToInt32(y[1]))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            });
+            return scoreboard;
+        }
     }
 }

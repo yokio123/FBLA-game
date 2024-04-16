@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,7 +18,7 @@ public class ranking : MonoBehaviour
             rows.Add(rowsParent.transform.GetChild(i).gameObject);
         }
         GameState gameState = SaveLoadManager.Load();
-        List<List<string>> leaderboard = gameState.leaderboard;
+        List<List<string>> leaderboard = SortScoreboard(gameState.leaderboard);
         for (int i = 0; i < leaderboard.Count && i < 10; i++)
         {
             List<string> row = leaderboard[i];
@@ -25,6 +26,22 @@ public class ranking : MonoBehaviour
             SetName(rows[i], row[0]);
             SetGold(rows[i], row[1]);
         }
+    }
+
+    List<List<string>> SortScoreboard(List<List<string>> scoreboard)
+    {
+        scoreboard.Sort((List<string> x, List<string> y) =>
+        {
+            if (Convert.ToInt32(x[1]) < Convert.ToInt32(y[1]))
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        });
+        return scoreboard;
     }
 
     void SetName(GameObject row, string newName)
